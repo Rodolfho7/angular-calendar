@@ -25,8 +25,9 @@ export class CalendarDayComponent implements OnChanges {
 
   ngOnChanges(changes: SimpleChanges): void {
     if (changes['currentMonth']) {
-      this.dayName = this.dateService.getNameDay(new Date(this.currentYear, this.currentMonth, this.dayInCalendar));
-      const weekDay = this.dateService.getDayOfWeek(new Date(this.currentYear, this.currentMonth, this.dayInCalendar));
+      const currentDate = new Date(this.currentYear, this.currentMonth, this.dayInCalendar);
+      this.dayName = this.dateService.getNameDay(currentDate);
+      const weekDay = this.dateService.getDayOfWeek(currentDate);
       this.isWeekend = weekDay === 0 || weekDay === 6;
     }
   }

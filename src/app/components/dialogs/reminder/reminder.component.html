@@ -1,8 +1,34 @@
-<h2 mat-dialog-title>Reminder</h2>
+<div class="flex justify-between items-center">
+  <h2 mat-dialog-title>Reminder</h2>
+  <span class="p-1 flex cursor-pointer rounded-full hover:bg-gray-300 mb-5" (click)="deleteReminder()" matTooltip="delete reminder">
+    <mat-icon>delete</mat-icon>
+  </span>
+</div>
 <mat-dialog-content class="mat-typography">
-  <p>in progress...</p>
+  <form [formGroup]="reminder">
+    <mat-form-field class="my-5 mx-0 w-full">
+      <mat-label for="text">Text</mat-label>
+      <input matInput maxlength="30" type="text" id="text" formControlName="text">
+    </mat-form-field>
+    <mat-form-field class="my-5 mx-0 w-full">
+      <mat-label for="datetime">Date and time</mat-label>
+      <input matInput type="datetime-local" id="datetime" formControlName="dateTime">
+    </mat-form-field>
+    <div class="my-5 mx-0 w-full flex-center">
+      <div>
+        <ng-container *ngFor="let color of cardListColors">
+          <span
+            class="w-6 h-6 inline-block rounded-full cursor-pointer mr-1 {{color.value}}"
+            [ngClass]="{'selected-color': color.name === selectedColor}"
+            (click)="setColor(color)">
+          </span>
+        </ng-container>
+      </div>
+    </div>
+  </form>
 </mat-dialog-content>
+
 <mat-dialog-actions align="end">
-  <button mat-button mat-dialog-close>Cancel</button>
-  <button mat-button [mat-dialog-close]="true" cdkFocusInitial>Save</button>
+  <button mat-button (click)="closeModal()">Cancel</button>
+  <button mat-button (click)="save()" [disabled]="reminder.invalid">Save</button>
 </mat-dialog-actions>

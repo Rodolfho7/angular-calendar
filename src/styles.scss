@@ -39,3 +39,39 @@ $angular-calendar-theme: mat.define-light-theme((
 
 body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
 
+
+.bg-green {
+  background-color: rgb(158, 255, 149);
+  // color: rgb(0, 167, 14);
+  color: #000;
+  &:hover {
+    background-color: rgb(63, 255, 45);
+  }
+}
+
+.bg-pink {
+  background-color: rgb(244, 199, 255);
+  // color: rgb(125, 0, 156);
+  color: #000;
+  &:hover {
+    background-color: rgb(240, 179, 255);
+  }
+}
+
+.bg-red {
+  background-color: rgb(255, 149, 149);
+  // color: rgb(167, 0, 0);
+  color: #000;
+  &:hover {
+    background-color: rgb(255, 45, 45);
+  }
+}
+
+.bg-blue {
+  background-color: rgb(149, 156, 255);
+  // color: rgb(0, 17, 167);
+  color: #000;
+  &:hover {
+    background-color: rgb(81, 93, 255);
+  }
+}
