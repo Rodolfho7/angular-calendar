@@ -43,6 +43,7 @@ export class CalendarComponent implements OnInit {
   }
 
   changeMonth(num: number): void {
+    this.monthReminders = [];
     let date = this.dateService.getDate();
     date.setMonth(date.getMonth() + num);
     this.dateService.setDate(date);

@@ -30,7 +30,6 @@ export class ReminderComponent {
     const date = this.data?.dateTime;
     const fixedData = date ? this.dateService.convertToDateTime(new Date(date)) : null;
     this.reminder = this.fb.group({
-      id: [this.data?.id],
       yearMonth: [this.data?.yearMonth],
       text: [this.data?.text, Validators.required],
       dateTime: [fixedData, Validators.required],
@@ -52,24 +51,24 @@ export class ReminderComponent {
   }
 
   deleteReminder() {
-    if (!this.reminder.value.id) {
+    if (!this.data?.id) {
       this.snackBar.open('reminder do not exist', '', {
         duration: 3000
       });
       return;
     }
-    this.calendarService.deleteReminder(this.reminder.value.id);
+    this.calendarService.deleteReminder(this.data.id);
     this.snackBar.open('reminder deleted', '', {
       duration: 3000
     });
     this.closeModal(true);
   }
 
-  save(): void {
+  async save(): Promise<void> {
     this.setYearMonth();
-    this.reminder.value.id
-    ? this.calendarService.updateReminder(this.reminder.value)
-    : this.calendarService.createReminder(this.reminder.value);
+    this.data?.id
+    ? await this.calendarService.updateReminder({ ...this.data, ...this.reminder.value })
+    : await this.calendarService.createReminder(this.reminder.value);
     this.snackBar.open('reminder created', '', {
       duration: 3000
     });
