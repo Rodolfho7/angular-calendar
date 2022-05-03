@@ -31,6 +31,7 @@ export class ReminderComponent {
     const fixedData = date ? this.dateService.convertToDateTime(new Date(date)) : null;
     this.reminder = this.fb.group({
       id: [this.data?.id],
+      yearMonth: [this.data?.yearMonth],
       text: [this.data?.text, Validators.required],
       dateTime: [fixedData, Validators.required],
       color: [this.data?.color, Validators.required]
@@ -65,6 +66,7 @@ export class ReminderComponent {
   }
 
   save(): void {
+    this.setYearMonth();
     this.reminder.value.id
     ? this.calendarService.updateReminder(this.reminder.value)
     : this.calendarService.createReminder(this.reminder.value);
@@ -72,6 +74,12 @@ export class ReminderComponent {
       duration: 3000
     });
     this.closeModal(true);
+  }
+
+  setYearMonth() {
+    const dateTime: string = this.reminder.get('dateTime')?.value;
+    const [year, month, ...rest] = dateTime.split('-');
+    this.reminder.get('yearMonth')?.setValue(`${year}-${month}`);
   }
 
   closeModal(update: boolean = false): void {

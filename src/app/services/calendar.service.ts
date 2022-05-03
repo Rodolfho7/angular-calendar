@@ -34,7 +34,7 @@ export class CalendarService {
 
   listRemindersWithDateFilter(filterDate: string): Observable<Reminder[]> {
     return this.reminders$.pipe(
-      map((reminders) => reminders.filter((r) => r.dateTime.includes(filterDate)))
+      map((reminders) => reminders.filter((r) => r.yearMonth == filterDate))
     );
   }
 
