@@ -1,1 +1,41 @@
-<p>calendar-day works!</p>
+<div
+  class="rounded-md bg-white h-32 text-gray-800 flex flex-col border border-gray-300 self-end"
+  [ngClass]="{'bg-gray-300 opacity-30': disabled, 'border-none shadow hover:shadow-xl transition-all': !disabled}">
+  <h3 class="m-0 flex justify-between" [ngClass]="{'text-gray-700': !isToday, 'bg-gray-300': isWeekend}">
+    <div>
+      <span class="ml-2 font-medium" [ngClass]="{'bg-blue-300 p-1 rounded-full text-white': isToday}">
+        {{ dayInCalendar }}
+      </span>
+      <span class="inline lg:hidden">{{ dayName }}</span>
+    </div>
+    <span class="px-2 py-0 bg-orange-700 text-white rounded-md" *ngIf="(reminders$ | async)?.length as remindersLenght">{{ remindersLenght }}</span>
+  </h3>
+  <div
+    *ngIf="(reminders$ | async) as reminders"
+    class="overflow-x-hidden overflow-y-auto p-1 h-full"
+    [ngClass]="{
+      'bg-gray-300': isWeekend,
+      'bg-blue-300': !reminders.length && !disabled && !isWeekend
+    }"
+  >
+    <ng-container *ngFor="let reminder of reminders">
+      <div class="rounded px-1 py-0 cursor-pointer"
+        [ngClass]="reminder.color"
+        (click)="openReminderForm(reminder)"
+      >
+        <div class="whitespace-nowrap text-ellipsis overflow-hidden">
+          {{ reminder.text }}
+        </div>
+        <div class="flex items-center justify-between">
+          <span>
+            {{ reminder.dateTime | date: 'shortTime' }}, {{ reminder?.city }}
+          </span>
+          <span class="flex flex-col items-center pl-1">
+            {{ reminder.weather?.weather }}
+            <img class="h-8" *ngIf="reminder.city" src="http://openweathermap.org/img/w/{{reminder.weather?.icon}}.png" alt="" srcset="">
+          </span>
+        </div>
+      </div>
+    </ng-container>
+  </div>
+</div>

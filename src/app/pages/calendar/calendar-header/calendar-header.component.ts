@@ -7,9 +7,9 @@ import { Component, EventEmitter, Input, Output } from '@angular/core';
 })
 export class CalendarHeaderComponent {
 
-  constructor() { }
-
   @Input() dateToday = '';
   @Output() changeMonth = new EventEmitter<number>();
+  
+  constructor() { }
 
 }
