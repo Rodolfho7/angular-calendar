@@ -1,4 +1,5 @@
-import { Component, Input } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
+import { DateService } from '@services/date.service';
 import { Observable } from 'rxjs';
 
 @Component({
@@ -6,7 +7,7 @@ import { Observable } from 'rxjs';
   templateUrl: './calendar-day.component.html',
   styleUrls: ['./calendar-day.component.scss']
 })
-export class CalendarDayComponent {
+export class CalendarDayComponent implements OnInit {
 
   reminders$!: Observable<any[]>; // reminders$: Observable<Reminder[]>;
   @Input() dayInCalendar: number = 1;
@@ -17,12 +18,15 @@ export class CalendarDayComponent {
 
   isToday = false;
   isWeekend = false;
-  dayName: string = 'day-name';
+  dayName: string = '';
 
-  constructor() { }
+  constructor(private dateService: DateService) { }
+
+  ngOnInit(): void {
+    this.dayName = this.dateService.getNameDay(new Date(this.currentYear, this.currentMonth, this.dayInCalendar));
+  }
 
   openReminderForm(reminder?: any /*Reminder */): void {
     //
   }
-
 }

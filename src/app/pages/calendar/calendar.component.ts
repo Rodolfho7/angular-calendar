@@ -1,25 +1,39 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+import { DateService } from '@services/date.service';
 
 @Component({
   selector: 'app-calendar',
   templateUrl: './calendar.component.html',
   styleUrls: ['./calendar.component.scss']
 })
-export class CalendarComponent {
-  dateToday: string = 'May 2022';
-  daysOffset: number[] = [28, 29, 30];
-  monthDays: number[] = [1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16];
+export class CalendarComponent implements OnInit {
+  dateToday: string = '';
+  daysOffset: number[] = [];
+  monthDays: number[] = [];
 
   currentDay = 0;
   currentMonth = 1;
   currentYear = 0;
 
-  constructor() { }
+  constructor(private dateService: DateService) { }
+
+  ngOnInit(): void {
+    this.initializeCalendar();
+  }
+
+  initializeCalendar(): void {
+    this.daysOffset = this.dateService.getListOffsetDays();
+    this.currentDay = this.dateService.getDayOfMonth();
+    this.currentMonth = this.dateService.getMonth();
+    this.currentYear = this.dateService.getYear();
+    this.dateToday = this.dateService.getDateYearAndMonth();
+    this.monthDays = this.dateService.getListDaysOfMonth();
+  }
 
   changeMonth(num: number): void {
-    // let date = this.dateService.getDate();
-    // date.setMonth(date.getMonth() + num);
-    // this.dateService.setDate(date);
-    // this.initializeCalendar();
+    let date = this.dateService.getDate();
+    date.setMonth(date.getMonth() + num);
+    this.dateService.setDate(date);
+    this.initializeCalendar();
   }
 }
