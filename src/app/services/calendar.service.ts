@@ -20,7 +20,6 @@ export class CalendarService {
   }
 
   updateReminder(reminder: Reminder): Promise<void> {
-    console.log(reminder);
     return this.taskService.updateTask(reminder);
   }
 
