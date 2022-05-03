@@ -1,7 +1,7 @@
-import { Component, Input, OnChanges, SimpleChanges } from '@angular/core';
+import { Component, EventEmitter, Input, OnChanges, Output, SimpleChanges } from '@angular/core';
+import { MatDialog } from '@angular/material/dialog';
 import { Reminder } from '@interfaces/reminder';
 import { DateService } from '@services/date.service';
-import { Observable, of } from 'rxjs';
 
 @Component({
   selector: 'app-calendar-day',
@@ -10,12 +10,15 @@ import { Observable, of } from 'rxjs';
 })
 export class CalendarDayComponent implements OnChanges {
 
-  reminders$: Observable<Reminder[]> = of([]);
   @Input() dayInCalendar: number = 1;
   @Input() today: number = 1;
   @Input() currentMonth: number = 1;
   @Input() currentYear: number = 1;
   @Input() disabled = false;
+  @Input() MonthReminders: Reminder[] = [];
+  @Output() reminderEdit = new EventEmitter<Reminder>();
+
+  reminders: Reminder[] = [];
 
   isToday = false;
   isWeekend = false;
@@ -30,9 +33,18 @@ export class CalendarDayComponent implements OnChanges {
       const weekDay = this.dateService.getDayOfWeek(currentDate);
       this.isWeekend = weekDay === 0 || weekDay === 6;
     }
+
+    if (changes['MonthReminders']) {
+      const filter = `${this.currentYear}-${this.fixString(this.currentMonth + 1)}-${this.fixString(this.dayInCalendar)}`;
+      this.reminders = this.MonthReminders.filter((r) => r.dateTime.includes(filter));
+    }
   }
 
   openReminderDialog(reminder: Reminder): void {
-    //
+    this.reminderEdit.emit(reminder);
+  }
+
+  private fixString(value: number): string {
+    return String(value).padStart(2, '0');
   }
 }

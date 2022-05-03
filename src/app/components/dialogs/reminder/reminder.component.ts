@@ -30,10 +30,12 @@ export class ReminderComponent {
     const date = this.data?.dateTime;
     const fixedData = date ? this.dateService.convertToDateTime(new Date(date)) : null;
     this.reminder = this.fb.group({
+      id: [this.data?.id],
       text: [this.data?.text, Validators.required],
       dateTime: [fixedData, Validators.required],
       color: [this.data?.color, Validators.required]
     });
+    this.setSelectedColor();
   }
 
   setSelectedColor(): void {
@@ -49,21 +51,30 @@ export class ReminderComponent {
   }
 
   deleteReminder() {
+    if (!this.reminder.value.id) {
+      this.snackBar.open('reminder do not exist', '', {
+        duration: 3000
+      });
+      return;
+    }
+    this.calendarService.deleteReminder(this.reminder.value.id);
     this.snackBar.open('reminder deleted', '', {
       duration: 3000
     });
-    this.closeModal();
+    this.closeModal(true);
   }
 
   save(): void {
-    this.calendarService.createReminder(this.reminder.value);
+    this.reminder.value.id
+    ? this.calendarService.updateReminder(this.reminder.value)
+    : this.calendarService.createReminder(this.reminder.value);
     this.snackBar.open('reminder created', '', {
       duration: 3000
     });
-    this.closeModal();
+    this.closeModal(true);
   }
 
-  closeModal(): void {
-    this.dialogRef.close();
+  closeModal(update: boolean = false): void {
+    this.dialogRef.close(update);
   }
 }

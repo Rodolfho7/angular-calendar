@@ -14,6 +14,8 @@
       [today]="currentDay"
       [currentMonth]="currentMonth"
       [currentYear]="currentYear"
+      [MonthReminders]="monthReminders"
+      (reminderEdit)="editReminder($event)"
     ></app-calendar-day>
   </ng-container>
 </div>

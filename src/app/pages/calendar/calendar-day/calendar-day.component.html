@@ -8,10 +8,10 @@
       </span>
       <span class="inline lg:hidden">{{ dayName }}</span>
     </div>
-    <span class="px-2 py-0 bg-orange-700 text-white rounded-md" *ngIf="(reminders$ | async)?.length as remindersLenght">{{ remindersLenght }}</span>
+    <span class="px-2 py-0 bg-orange-700 text-white rounded-md" *ngIf="reminders.length as remindersLenght">{{ remindersLenght }}</span>
   </h3>
   <div
-    *ngIf="(reminders$ | async) as reminders"
+    *ngIf="reminders"
     class="overflow-x-hidden overflow-y-auto p-1 h-full"
     [ngClass]="{
       'bg-gray-200': isWeekend,
@@ -19,7 +19,7 @@
     }"
   >
     <ng-container *ngFor="let reminder of reminders">
-      <div class="rounded px-1 py-0 cursor-pointer"
+      <div class="rounded px-1 py-0 cursor-pointer mb-2"
         [ngClass]="reminder.color"
         (click)="openReminderDialog(reminder)"
       >

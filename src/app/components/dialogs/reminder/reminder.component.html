@@ -19,7 +19,7 @@
         <ng-container *ngFor="let color of cardListColors">
           <span
             class="w-6 h-6 inline-block rounded-full cursor-pointer mr-1 {{color.value}}"
-            [ngClass]="{'selected-color': color.name === selectedColor}"
+            [ngClass]="{'border-2 border-black': color.name === selectedColor}"
             (click)="setColor(color)">
           </span>
         </ng-container>

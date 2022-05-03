@@ -24,7 +24,7 @@ export class CalendarService {
 
   deleteReminder(reminderId: string): void {
     let remindersToKeep = this.reminders$.value.filter((r) => r.id !== reminderId);
-    this.reminders$.next(remindersToKeep);
+    this.reminders$.next([...remindersToKeep]);
   }
 
   updateReminder(reminder: Reminder): void {
@@ -36,5 +36,9 @@ export class CalendarService {
     return this.reminders$.pipe(
       map((reminders) => reminders.filter((r) => r.dateTime.includes(filterDate)))
     );
+  }
+
+  listReminders(): Reminder[] {
+    return this.reminders$.value;
   }
 }
