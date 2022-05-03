@@ -1,15 +1,16 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, Input, OnChanges, SimpleChanges } from '@angular/core';
+import { Reminder } from '@interfaces/reminder';
 import { DateService } from '@services/date.service';
-import { Observable } from 'rxjs';
+import { Observable, of } from 'rxjs';
 
 @Component({
   selector: 'app-calendar-day',
   templateUrl: './calendar-day.component.html',
   styleUrls: ['./calendar-day.component.scss']
 })
-export class CalendarDayComponent implements OnInit {
+export class CalendarDayComponent implements OnChanges {
 
-  reminders$!: Observable<any[]>; // reminders$: Observable<Reminder[]>;
+  reminders$: Observable<Reminder[]> = of([]);
   @Input() dayInCalendar: number = 1;
   @Input() today: number = 1;
   @Input() currentMonth: number = 1;
@@ -22,11 +23,15 @@ export class CalendarDayComponent implements OnInit {
 
   constructor(private dateService: DateService) { }
 
-  ngOnInit(): void {
-    this.dayName = this.dateService.getNameDay(new Date(this.currentYear, this.currentMonth, this.dayInCalendar));
+  ngOnChanges(changes: SimpleChanges): void {
+    if (changes['currentMonth']) {
+      this.dayName = this.dateService.getNameDay(new Date(this.currentYear, this.currentMonth, this.dayInCalendar));
+      const weekDay = this.dateService.getDayOfWeek(new Date(this.currentYear, this.currentMonth, this.dayInCalendar));
+      this.isWeekend = weekDay === 0 || weekDay === 6;
+    }
   }
 
-  openReminderForm(reminder?: any /*Reminder */): void {
+  openReminderDialog(reminder: Reminder): void {
     //
   }
 }

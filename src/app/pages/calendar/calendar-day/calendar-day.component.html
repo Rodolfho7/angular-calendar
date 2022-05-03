@@ -14,25 +14,21 @@
     *ngIf="(reminders$ | async) as reminders"
     class="overflow-x-hidden overflow-y-auto p-1 h-full"
     [ngClass]="{
-      'bg-gray-300': isWeekend,
-      'bg-blue-300': !reminders.length && !disabled && !isWeekend
+      'bg-gray-200': isWeekend,
+      'bg-blue-100': !reminders.length && !disabled && !isWeekend
     }"
   >
     <ng-container *ngFor="let reminder of reminders">
       <div class="rounded px-1 py-0 cursor-pointer"
         [ngClass]="reminder.color"
-        (click)="openReminderForm(reminder)"
+        (click)="openReminderDialog(reminder)"
       >
         <div class="whitespace-nowrap text-ellipsis overflow-hidden">
           {{ reminder.text }}
         </div>
         <div class="flex items-center justify-between">
           <span>
-            {{ reminder.dateTime | date: 'shortTime' }}, {{ reminder?.city }}
-          </span>
-          <span class="flex flex-col items-center pl-1">
-            {{ reminder.weather?.weather }}
-            <img class="h-8" *ngIf="reminder.city" src="http://openweathermap.org/img/w/{{reminder.weather?.icon}}.png" alt="" srcset="">
+            {{ reminder.dateTime | date: 'shortTime' }}
           </span>
         </div>
       </div>
