@@ -4,6 +4,8 @@ import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { Reminder } from '@interfaces/reminder';
 import { cardListColors } from '@interfaces/card-colors.name';
 import { DateService } from '@services/date.service';
+import { CalendarService } from '@services/calendar.service';
+import { MatSnackBar } from '@angular/material/snack-bar';
 
 
 @Component({
@@ -21,7 +23,9 @@ export class ReminderComponent {
     public dialogRef: MatDialogRef<ReminderComponent>,
     @Inject(MAT_DIALOG_DATA) public data: Reminder,
     private fb: FormBuilder,
-    private dateService: DateService
+    private dateService: DateService,
+    private calendarService: CalendarService,
+    private snackBar: MatSnackBar
   ) {
     const date = this.data?.dateTime;
     const fixedData = date ? this.dateService.convertToDateTime(new Date(date)) : null;
@@ -45,14 +49,21 @@ export class ReminderComponent {
   }
 
   deleteReminder() {
-
+    this.snackBar.open('reminder deleted', '', {
+      duration: 3000
+    });
+    this.closeModal();
   }
 
-  save() {
-    console.log(this.reminder.value);
+  save(): void {
+    this.calendarService.createReminder(this.reminder.value);
+    this.snackBar.open('reminder created', '', {
+      duration: 3000
+    });
+    this.closeModal();
   }
 
-  closeModal() {
+  closeModal(): void {
     this.dialogRef.close();
   }
 }
