@@ -1,0 +1,22 @@
+
+<div class="flex items-center justify-center my-4 mx-0">
+  <span class="p-1 cursor-pointer flex rounded-full hover:bg-gray-300" (click)="changeMonth.emit(-1)" matTooltip="previous month">
+    <mat-icon>keyboard_arrow_left</mat-icon>
+  </span>
+  <span class="w-80 text-4xl text-gray-800 py-0 px-4 rounded-md ml-2 text-center">
+    {{ dateToday }}
+  </span>
+  <span class="p-1 cursor-pointer flex rounded-full hover:bg-gray-300" (click)="changeMonth.emit(1)" matTooltip="next month">
+    <mat-icon>keyboard_arrow_right</mat-icon>
+  </span>
+</div>
+
+<div class="p-4 grid-cols-7 gap-4 lg:grid hidden">
+  <div class="text-center rounded-md text-white bg-orange-700">Sunday</div>
+  <div class="text-center rounded-md text-white bg-orange-700">Monday</div>
+  <div class="text-center rounded-md text-white bg-orange-700">Tuesday</div>
+  <div class="text-center rounded-md text-white bg-orange-700">Wednesday</div>
+  <div class="text-center rounded-md text-white bg-orange-700">Thursday</div>
+  <div class="text-center rounded-md text-white bg-orange-700">Friday</div>
+  <div class="text-center rounded-md text-white bg-orange-700">Saturday</div>
+</div>
