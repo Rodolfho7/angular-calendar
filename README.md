@@ -5,5 +5,7 @@ A calendar(google calendar) made with angular, firebase and tailwindcss
 
 A Calendar where you can add tasks that is separated by day, you can create, remove and edit a task, and change months
 
+[Online project running](https://rods-calendar.firebaseapp.com)
+
 ### in progress...
 
