@@ -1,0 +1,14 @@
+{
+  "targets": {
+    "angular-calendar-3b93c": {
+      "hosting": {
+        "angular-calendar": [
+          "rods-calendar"
+        ]
+      }
+    }
+  },
+  "projects": {
+    "default": "angular-calendar-3b93c"
+  }
+}

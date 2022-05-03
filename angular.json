@@ -103,6 +103,16 @@
             ],
             "scripts": []
           }
+        },
+        "deploy": {
+          "builder": "@angular/fire:deploy",
+          "options": {
+            "prerender": false,
+            "ssr": false,
+            "browserTarget": "angular-calendar:build:production",
+            "firebaseProject": "angular-calendar-3b93c",
+            "firebaseHostingSite": "rods-calendar"
+          }
         }
       }
     }
