@@ -6,6 +6,9 @@ import { CalendarDayComponent } from './calendar-day/calendar-day.component';
 import { CalendarHeaderComponent } from './calendar-header/calendar-header.component';
 import { MatIconModule } from '@angular/material/icon';
 import { MatTooltipModule } from '@angular/material/tooltip';
+import { MatButtonModule } from '@angular/material/button';
+import { MatDialogModule } from '@angular/material/dialog';
+import { ReminderModule } from '@components/dialogs/reminder/reminder.module';
 
 @NgModule({
   declarations: [
@@ -16,8 +19,11 @@ import { MatTooltipModule } from '@angular/material/tooltip';
   imports: [
     CommonModule,
     CalendarRoutingModule,
+    MatButtonModule,
     MatIconModule,
-    MatTooltipModule
+    MatTooltipModule,
+    MatDialogModule,
+    ReminderModule
   ],
   exports: [ CalendarComponent ]
 })

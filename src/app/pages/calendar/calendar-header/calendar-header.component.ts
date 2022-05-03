@@ -9,7 +9,11 @@ export class CalendarHeaderComponent {
 
   @Input() dateToday = '';
   @Output() changeMonth = new EventEmitter<number>();
-  
+  @Output() openAddReminder = new EventEmitter();
+
   constructor() { }
 
+  handleAddReminder() {
+    this.openAddReminder.emit();
+  }
 }

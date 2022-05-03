@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { MatDialog } from '@angular/material/dialog';
+import { ReminderComponent } from '@components/dialogs/reminder/reminder.component';
 import { DateService } from '@services/date.service';
 
 @Component({
@@ -15,7 +17,10 @@ export class CalendarComponent implements OnInit {
   currentMonth = 1;
   currentYear = 0;
 
-  constructor(private dateService: DateService) { }
+  constructor(
+    private dateService: DateService,
+    private dialog: MatDialog
+  ) { }
 
   ngOnInit(): void {
     this.initializeCalendar();
@@ -35,5 +40,9 @@ export class CalendarComponent implements OnInit {
     date.setMonth(date.getMonth() + num);
     this.dateService.setDate(date);
     this.initializeCalendar();
+  }
+
+  addReminder(): void {
+    this.dialog.open(ReminderComponent);
   }
 }
