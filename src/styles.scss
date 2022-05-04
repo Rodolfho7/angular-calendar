@@ -45,7 +45,8 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
   // color: rgb(0, 167, 14);
   color: #000;
   &:hover {
-    background-color: rgb(63, 255, 45);
+    background-color: rgb(11, 138, 0);
+    color: #FFF;
   }
 }
 
@@ -54,7 +55,8 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
   // color: rgb(125, 0, 156);
   color: #000;
   &:hover {
-    background-color: rgb(240, 179, 255);
+    background-color: rgb(154, 0, 192);
+    color: #FFF;
   }
 }
 
@@ -64,6 +66,7 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
   color: #000;
   &:hover {
     background-color: rgb(255, 45, 45);
+    color: #FFF;
   }
 }
 
@@ -73,5 +76,6 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
   color: #000;
   &:hover {
     background-color: rgb(81, 93, 255);
+    color: #FFF;
   }
 }

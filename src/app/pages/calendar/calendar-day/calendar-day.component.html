@@ -1,9 +1,9 @@
 <div
-  class="rounded-md bg-white h-32 text-gray-800 flex flex-col border border-gray-300 self-end"
+  class="rounded-md bg-white h-32 text-gray-800 flex flex-col border border-gray-300"
   [ngClass]="{'bg-gray-300 opacity-30': disabled, 'border-none shadow hover:shadow-xl transition-all': !disabled}">
   <h3 class="m-0 flex justify-between" [ngClass]="{'text-gray-700': !isToday, 'bg-gray-300': isWeekend}">
-    <div>
-      <span class="ml-2 font-medium" [ngClass]="{'bg-blue-300 p-1 rounded-full text-white': isToday}">
+    <div class="flex space-x-2">
+      <span class="ml-2 font-medium" [ngClass]="{'bg-blue-600 px-1 rounded-full text-white flex': isToday}">
         {{ dayInCalendar }}
       </span>
       <span class="inline lg:hidden">{{ dayName }}</span>

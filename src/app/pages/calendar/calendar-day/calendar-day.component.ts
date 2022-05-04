@@ -24,6 +24,9 @@ export class CalendarDayComponent implements OnChanges {
   isWeekend = false;
   dayName: string = '';
 
+  month = new Date().getMonth();
+  year = new Date().getFullYear();
+
   constructor(private dateService: DateService) { }
 
   ngOnChanges(changes: SimpleChanges): void {
@@ -32,6 +35,10 @@ export class CalendarDayComponent implements OnChanges {
       this.dayName = this.dateService.getNameDay(currentDate);
       const weekDay = this.dateService.getDayOfWeek(currentDate);
       this.isWeekend = weekDay === 0 || weekDay === 6;
+      this.isToday = 
+        this.today === this.dayInCalendar
+        && this.currentMonth === this.month
+        && this.currentYear === this.year;
     }
 
     if (changes['MonthReminders']) {
