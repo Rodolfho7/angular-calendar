@@ -4,13 +4,12 @@
 
 export const environment = {
   firebase: {
-    projectId: 'angular-calendar-3b93c',
-    appId: '1:1080678432908:web:11ff44e04531c266517ba9',
-    storageBucket: 'angular-calendar-3b93c.appspot.com',
-    locationId: 'us-central',
-    apiKey: 'AIzaSyCGXgXOlch0gFKohX_xLE56kGk2DbxLdc4',
-    authDomain: 'angular-calendar-3b93c.firebaseapp.com',
-    messagingSenderId: '1080678432908',
+    apiKey: "AIzaSyDtCWTa9lOpn56t33pYP_G0EosVyag2vLo",
+    authDomain: "angular-calendar-test.firebaseapp.com",
+    projectId: "angular-calendar-test",
+    storageBucket: "angular-calendar-test.appspot.com",
+    messagingSenderId: "154491307965",
+    appId: "1:154491307965:web:6a5515504f8225dc2534d4"
   },
   production: false
 };
