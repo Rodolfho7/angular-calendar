@@ -1,6 +1,6 @@
 {
   "hosting": {
-    "target": "angular-calendar-test",
+    "target": "angular-calendar",
     "public": "dist/angular-calendar",
     "ignore": [
       "**/.*"
