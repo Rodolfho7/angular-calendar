@@ -14,7 +14,7 @@
     "angular-calendar-test": {
       "hosting": {
         "angular-calendar-test": [
-          "rods-calendar-test"
+          "angular-calendar-test"
         ]
       }
     }
