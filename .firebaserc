@@ -10,16 +10,6 @@
           "rods-calendar"
         ]
       }
-    },
-    "angular-calendar-test": {
-      "hosting": {
-        "angular-calendar-test": [
-          "angular-calendar-test"
-        ],
-        "angular-calendar": [
-          "angular-calendar-3b93c"
-        ]
-      }
     }
   }
 }
