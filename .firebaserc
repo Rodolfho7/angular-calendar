@@ -1,4 +1,8 @@
 {
+  "projects": {
+    "prod": "angular-calendar-3b93c",
+    "dev": "angular-calendar-test"
+  },
   "targets": {
     "angular-calendar-3b93c": {
       "hosting": {
@@ -6,9 +10,13 @@
           "rods-calendar"
         ]
       }
+    },
+    "angular-calendar-test": {
+      "hosting": {
+        "angular-calendar-test": [
+          "angular-calendar-test"
+        ]
+      }
     }
-  },
-  "projects": {
-    "default": "angular-calendar-3b93c"
   }
 }
