@@ -1,9 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
-import { ReminderComponent } from '@components/dialogs/reminder/reminder.component';
-import { Reminder } from '@interfaces/reminder';
-import { CalendarService } from '@services/calendar.service';
-import { DateService } from '@services/date.service';
+import { ReminderComponent } from '../../components/dialogs/reminder/reminder.component';
+import { Reminder } from '../../interfaces/reminder';
+import { CalendarService } from '../../services/calendar.service';
+import { DateService } from '../../services/date.service';
 import { first, tap } from 'rxjs/operators';
 
 @Component({

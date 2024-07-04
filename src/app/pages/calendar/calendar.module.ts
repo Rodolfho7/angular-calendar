@@ -8,7 +8,7 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatTooltipModule } from '@angular/material/tooltip';
 import { MatButtonModule } from '@angular/material/button';
 import { MatDialogModule } from '@angular/material/dialog';
-import { ReminderModule } from '@components/dialogs/reminder/reminder.module';
+import { ReminderModule } from './../../components/dialogs/reminder/reminder.module';
 
 @NgModule({
   declarations: [

@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
-import { Reminder } from '@interfaces/reminder';
+import { Reminder } from '../interfaces/reminder';
 import { Observable } from 'rxjs';
-import { TasksService } from '@services/tasks.service';
+import { TasksService } from '../services/tasks.service';
 import { DocumentReference } from '@angular/fire/compat/firestore';
 
 @Injectable({

@@ -1,7 +1,6 @@
 import { Component, EventEmitter, Input, OnChanges, Output, SimpleChanges } from '@angular/core';
-import { MatDialog } from '@angular/material/dialog';
-import { Reminder } from '@interfaces/reminder';
-import { DateService } from '@services/date.service';
+import { Reminder } from '../../../interfaces/reminder';
+import { DateService } from '../../../services/date.service';
 
 @Component({
   selector: 'app-calendar-day',

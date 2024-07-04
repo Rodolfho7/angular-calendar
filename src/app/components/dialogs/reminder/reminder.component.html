@@ -30,5 +30,5 @@
 
 <mat-dialog-actions align="end">
   <button mat-button (click)="closeModal()">Cancel</button>
-  <button mat-button (click)="save()" [disabled]="reminder.invalid">Save</button>
+  <button mat-raised-button color="primary" (click)="save()" [disabled]="reminder.invalid">Save</button>
 </mat-dialog-actions>

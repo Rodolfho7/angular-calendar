@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { AngularFirestore, AngularFirestoreCollection, DocumentReference } from '@angular/fire/compat/firestore';
-import { Reminder } from '@interfaces/reminder';
+import { Reminder } from '../interfaces/reminder';
 import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
 

@@ -1,10 +1,10 @@
 import { Component, Inject } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
-import { Reminder } from '@interfaces/reminder';
-import { cardListColors } from '@interfaces/card-colors.name';
-import { DateService } from '@services/date.service';
-import { CalendarService } from '@services/calendar.service';
+import { Reminder } from '../../../interfaces/reminder';
+import { cardListColors } from '../../../interfaces/card-colors.name';
+import { DateService } from '../../../services/date.service';
+import { CalendarService } from '../../../services/calendar.service';
 import { MatSnackBar } from '@angular/material/snack-bar';
 
 

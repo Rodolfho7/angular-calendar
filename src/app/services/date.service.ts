@@ -5,6 +5,8 @@ import { Injectable } from '@angular/core';
 })
 export class DateService {
 
+  public numero: number | null = null;
+
   private date: Date = new Date();
 
   constructor() { }
@@ -54,5 +56,9 @@ export class DateService {
 
   convertToDateTime(date: Date) {
     return (new Date(date.getTime() -  date.getTimezoneOffset() * 60000).toISOString()).slice(0, -1);
+  }
+
+  saveNumber(value: number) {
+
   }
 }
